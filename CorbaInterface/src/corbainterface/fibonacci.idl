@@ -1,0 +1,14 @@
+module example{ 
+    
+    interface fibonacci{ 
+        
+        /*
+         * Para generar 
+         * in: el valor del parametro se lo envia el cliente al servidor
+         * long: -231..231-1 (32 bits)
+         * numero: nombre de la variable
+        */
+        string generar(in long numero);
+        
+    }; 
+};

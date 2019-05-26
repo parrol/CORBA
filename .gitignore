@@ -1,2 +1,8 @@
 /CorbaInterface/nbproject/private/
 /CorbaServer/nbproject/private/
+/CorbaInterface/build/
+/CorbaInterface/dist/
+/CorbaCliente/build/
+/CorbaServer/build/
+/CorbaServer/dist/
+/CorbaCliente/dist/

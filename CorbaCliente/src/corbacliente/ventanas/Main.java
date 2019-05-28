@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package corbacliente.ventanas;
+import corbacliente.Cliente;
+import corbacliente.Interfaz;
+import javax.swing.JFrame;
 import utility.Utility;
 /**
  *
@@ -11,14 +14,11 @@ import utility.Utility;
  */
 public class Main extends javax.swing.JFrame {
 
-    private static CrearFactura crearFactura;
-
     /**
      * Creates new form Main
      */
-    public Main(CrearFactura crearFactura) {
+    public Main() {
         initComponents();
-        this.crearFactura = crearFactura;
         Utility utility = new Utility(this);
         utility.centerOnScreen();
 
@@ -102,7 +102,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_crearActionPerformed
-        crearFactura.setVisible(true);
+        Interfaz.getInterfaz(1).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_b_crearActionPerformed
 
@@ -140,7 +140,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main(crearFactura).setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }

@@ -15,6 +15,7 @@ import javax.swing.JFrame;
  */
 public class Utility {
     JFrame frame;
+    
     public Utility(JFrame frame) {
         this.frame = frame;
     }

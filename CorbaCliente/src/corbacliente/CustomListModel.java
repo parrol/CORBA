@@ -40,5 +40,9 @@ public class CustomListModel extends AbstractListModel {
     public Producto getProducto(int index) {
         return (Producto) lista.get(index);
     }
+    
+    public Persona getPersona(int index) {
+        return (Persona) lista.get(index);
+    }
 
 }

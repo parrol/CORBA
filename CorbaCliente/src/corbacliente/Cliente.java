@@ -2,6 +2,7 @@ package corbacliente;
 
 import corbacliente.ventanas.CrearFactura;
 import corbacliente.ventanas.Main;
+import corbacliente.Interfaz;
 import java.util.Scanner;
 import manejadores.factura;
 import manejadores.facturaHelper;
@@ -24,13 +25,14 @@ public class Cliente {
 
             //Empieza el programa
             //MAIN//
-            
+            Main main = new Main();
+            main.setVisible(true);
 
             CrearFactura crearFactura = new CrearFactura();
             crearFactura.setVisible(false);
-            
-            Main main = new Main(crearFactura);
-            main.setVisible(true);
+
+            Interfaz.getInterfaz().add(0, main);
+            Interfaz.getInterfaz().add(1, crearFactura);
 
             Scanner c = new Scanner(System.in);
             System.out.println("PC> - Generador de Fibonacci - ");

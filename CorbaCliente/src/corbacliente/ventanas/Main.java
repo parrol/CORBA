@@ -4,10 +4,21 @@
  * and open the template in the editor.
  */
 package corbacliente.ventanas;
+
 import corbacliente.Cliente;
+import corbacliente.CustomListModel;
+import corbacliente.Factura;
 import corbacliente.Interfaz;
+import corbacliente.Persona;
+import corbacliente.Producto;
+import static corbacliente.ventanas.Clientes.list_model;
+import static corbacliente.ventanas.Clientes.selectedIndex;
+import java.awt.Component;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import utility.Utility;
+
 /**
  *
  * @author Oriana
@@ -44,6 +55,11 @@ public class Main extends javax.swing.JFrame {
         lbl_titulo.setText("Generador de facturas");
 
         b_generar.setText("Generar factura");
+        b_generar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_generarActionPerformed(evt);
+            }
+        });
 
         b_crear.setText("Crear factura");
         b_crear.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +125,17 @@ public class Main extends javax.swing.JFrame {
     private void b_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_b_salirActionPerformed
+
+    private void b_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_generarActionPerformed
+
+        System.out.println("Persona seleccionada: " + Clientes.cliente);
+        ArrayList<Producto> productos = new  ArrayList<Producto>();
+        productos = Productos.list_model.getLista();
+        Persona persona = Clientes.list_model.getPersona(Clientes.selectedIndex);
+        Factura factura = new Factura(persona, productos, "", "", "", 0);
+        factura.imprimir();
+
+    }//GEN-LAST:event_b_generarActionPerformed
 
     /**
      * @param args the command line arguments

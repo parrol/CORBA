@@ -1,0 +1,7 @@
+Lista de la interfaz:
+
+index  : interfaz
+0 : Main
+1 : Insertar cliente
+2 : Insertar productos
+3 : Generar facturas

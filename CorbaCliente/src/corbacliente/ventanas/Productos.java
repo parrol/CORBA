@@ -6,6 +6,8 @@
 package corbacliente.ventanas;
 
 import corbacliente.CustomListModel;
+import corbacliente.Interfaz;
+import corbacliente.Persona;
 import corbacliente.Producto;
 import utility.Utility;
 
@@ -13,16 +15,16 @@ import utility.Utility;
  *
  * @author Oriana
  */
-public class CrearFactura extends javax.swing.JFrame {
+public class Productos extends javax.swing.JFrame {
 
-    CustomListModel list_model = new CustomListModel();
+    public static CustomListModel list_model = new CustomListModel();
 
     /**
      * Creates new form CrearFactura
      */
-    public CrearFactura() {
+    public Productos() {
         initComponents();
-        lista.setModel(list_model);
+        productos.setModel(list_model);
         Utility utility = new Utility(this);
         utility.centerOnScreen();
     }
@@ -41,7 +43,7 @@ public class CrearFactura extends javax.swing.JFrame {
         lbl_nombre = new javax.swing.JLabel();
         lbl_precio = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lista = new javax.swing.JList<>();
+        productos = new javax.swing.JList<>();
         b_anadir = new javax.swing.JButton();
         fld_nombre = new javax.swing.JTextField();
         fld_precio = new javax.swing.JTextField();
@@ -52,6 +54,7 @@ public class CrearFactura extends javax.swing.JFrame {
         lbl_info_nombre = new javax.swing.JLabel();
         lbl_info_precio = new javax.swing.JLabel();
         b_atras = new javax.swing.JButton();
+        b_aceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,12 +64,12 @@ public class CrearFactura extends javax.swing.JFrame {
 
         lbl_precio.setText("Precio:");
 
-        lista.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        productos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listaValueChanged(evt);
+                productosValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(lista);
+        jScrollPane1.setViewportView(productos);
 
         b_anadir.setText("+");
         b_anadir.addActionListener(new java.awt.event.ActionListener() {
@@ -100,10 +103,17 @@ public class CrearFactura extends javax.swing.JFrame {
 
         lbl_informacion_precio.setText("Precio:");
 
-        b_atras.setText("jButton1");
+        b_atras.setText("Atrás");
         b_atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_atrasActionPerformed(evt);
+            }
+        });
+
+        b_aceptar.setText("Confirmar");
+        b_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_aceptarActionPerformed(evt);
             }
         });
 
@@ -120,7 +130,7 @@ public class CrearFactura extends javax.swing.JFrame {
                                 .addComponent(lbl_agregarProductos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lbl_productos)
-                                .addGap(13, 13, 13))
+                                .addGap(37, 37, 37))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_fondoLayout.createSequentialGroup()
                                 .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_nombre)
@@ -130,24 +140,27 @@ public class CrearFactura extends javax.swing.JFrame {
                                 .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(fld_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                                     .addComponent(fld_nombre)
-                                    .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(lbl_info_precio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                                        .addComponent(lbl_info_nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(lbl_info_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                                    .addComponent(lbl_info_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(62, 62, 62)
                                 .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addGroup(panel_fondoLayout.createSequentialGroup()
+                                        .addGap(46, 46, 46)
+                                        .addComponent(b_aceptar)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fondoLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(b_eliminar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(b_anadir)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                        .addGap(31, 31, 31))
+                                        .addGap(26, 26, 26)))))
+                        .addGap(7, 7, 7))
                     .addGroup(panel_fondoLayout.createSequentialGroup()
-                        .addComponent(lbl_informacion_precio)
+                        .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_informacion_precio)
+                            .addComponent(b_atras))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(panel_fondoLayout.createSequentialGroup()
-                .addComponent(b_atras)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel_fondoLayout.setVerticalGroup(
             panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +194,11 @@ public class CrearFactura extends javax.swing.JFrame {
                 .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_informacion_precio)
                     .addComponent(lbl_info_precio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(b_atras))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(b_atras)
+                    .addComponent(b_aceptar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,7 +218,7 @@ public class CrearFactura extends javax.swing.JFrame {
     private void b_anadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_anadirActionPerformed
         float precio = Float.parseFloat(fld_precio.getText());
         Producto p = new Producto(fld_nombre.getText(), precio);
-        list_model.addProducto(p);
+        list_model.add(p);
     }//GEN-LAST:event_b_anadirActionPerformed
 
     private void fld_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fld_nombreActionPerformed
@@ -214,26 +230,46 @@ public class CrearFactura extends javax.swing.JFrame {
     }//GEN-LAST:event_fld_precioActionPerformed
 
     private void b_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_eliminarActionPerformed
-        int selection = lista.getSelectedIndex();
+        int selection = productos.getSelectedIndex();
         if (selection != -1) {
-            list_model.eliminarProducto(selection);
+            list_model.delete(selection);
         }
     }//GEN-LAST:event_b_eliminarActionPerformed
 
-    private void listaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaValueChanged
-        int selection = lista.getSelectedIndex();
+    private void productosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_productosValueChanged
+
+        mostrarProducto();
+    }//GEN-LAST:event_productosValueChanged
+
+    private void b_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_atrasActionPerformed
+        limpiarProductos();
+        this.setVisible(false);
+        Interfaz.getInterfaz(1).setVisible(true);
+
+    }//GEN-LAST:event_b_atrasActionPerformed
+
+    private void b_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_aceptarActionPerformed
+        this.setVisible(false);
+        Interfaz.getInterfaz(0).setVisible(true);
+    }//GEN-LAST:event_b_aceptarActionPerformed
+
+    private void mostrarProducto() {
+        int selection = productos.getSelectedIndex();
         if (selection != -1) {
             Producto p = list_model.getProducto(selection);
             lbl_info_nombre.setText(p.getNombre());
-            lbl_info_precio.setText(Float.toString( p.getPrecio()));
+            lbl_info_precio.setText(Float.toString(p.getPrecio()));
 
         }
-    }//GEN-LAST:event_listaValueChanged
+    }
 
-    private void b_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_atrasActionPerformed
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_b_atrasActionPerformed
+    private void limpiarProductos(){
+        lbl_info_nombre.setText("");
+        lbl_info_precio.setText("");
+        fld_nombre.setText("");
+        fld_precio.setText("");
+        list_model.removeAll();
+    }
 
     /**
      * @param args the command line arguments
@@ -252,25 +288,27 @@ public class CrearFactura extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrearFactura().setVisible(true);
+                new Productos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton b_aceptar;
     private javax.swing.JButton b_anadir;
     private javax.swing.JButton b_atras;
     private javax.swing.JButton b_eliminar;
@@ -285,7 +323,7 @@ public class CrearFactura extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_precio;
     private javax.swing.JLabel lbl_productos;
-    private javax.swing.JList<String> lista;
     private javax.swing.JPanel panel_fondo;
+    private javax.swing.JList<String> productos;
     // End of variables declaration//GEN-END:variables
 }

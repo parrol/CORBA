@@ -1,14 +1,15 @@
 module manejadores{ 
     
+    struct Productos{
+        string nombre;
+        float pecio;
+    };
+
+    typedef sequence <Productos> productoss;
+
     interface factura{ 
         
-        /*
-         * Para generar 
-         * in: el valor del parametro se lo envia el cliente al servidor
-         * long: -231..231-1 (32 bits)
-         * numero: nombre de la variable
-        */
-        string generar(in long numero);
+        void generar(in string nombre, in string cedula, in string direccionp, in productoss productos, in string company, in string direccionc, in string telefono, in long numero);
         
     }; 
 };

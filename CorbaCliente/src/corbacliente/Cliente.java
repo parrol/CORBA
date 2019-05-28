@@ -30,7 +30,7 @@ public class Cliente {
 
             Productos productos = new Productos();
             productos.setVisible(false);
-            
+
             Clientes clientes = new Clientes();
             clientes.setVisible(false);
 
@@ -38,8 +38,6 @@ public class Cliente {
             Interfaz.getInterfaz().add(1, clientes);
             Interfaz.getInterfaz().add(2, productos);
 
-            
-            
             Scanner c = new Scanner(System.in);
             System.out.println("PC> - Generador de Fibonacci - ");
             for (;;) {//ciclo infinito
@@ -49,8 +47,8 @@ public class Cliente {
                     break;
                 }
                 int numero = Integer.parseInt(input);
-                String response = metodos.generar(numero);
-                System.out.println("Fibonacci de " + numero + " es " + response);
+                //String response = metodos.generar(numero);
+                //System.out.println("Fibonacci de " + numero + " es " + response);
                 System.out.println("----------------------------------------------------------------------------");
             }
 

@@ -5,7 +5,6 @@
  */
 package corbacliente;
 
-import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import java.util.ArrayList;
 import jdk.nashorn.internal.objects.NativeArray;
 

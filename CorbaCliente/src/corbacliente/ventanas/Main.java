@@ -15,8 +15,18 @@ import static corbacliente.ventanas.Clientes.list_model;
 import static corbacliente.ventanas.Clientes.selectedIndex;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import manejadores.factura;
+import manejadores.facturaHelper;
+import org.omg.CORBA.ORB;
+import org.omg.CORBA.ORBPackage.InvalidName;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
+import org.omg.CosNaming.NamingContextPackage.CannotProceed;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import utility.Utility;
 
 /**
@@ -127,13 +137,24 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_b_salirActionPerformed
 
     private void b_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_generarActionPerformed
+        try {
+            String[] args = null;
+            ORB orb = ORB.init(args, null);
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-        System.out.println("Persona seleccionada: " + Clientes.cliente);
-        ArrayList<Producto> productos = new  ArrayList<Producto>();
-        productos = Productos.list_model.getLista();
-        Persona persona = Clientes.list_model.getPersona(Clientes.selectedIndex);
-        Factura factura = new Factura(persona, productos, "", "", "", 0);
-        factura.imprimir();
+            factura metodos = facturaHelper.narrow(ncRef.resolve_str("Factura"));
+            
+            System.out.println("Persona seleccionada: " + Clientes.cliente);
+            ArrayList<Producto> productos = new ArrayList<Producto>();
+            productos = Productos.list_model.getLista();
+            Persona persona = Clientes.list_model.getPersona(Clientes.selectedIndex);
+            Factura factura = new Factura(persona, productos, "", "", "", 0);
+            factura.imprimir();
+        } catch (InvalidName | NotFound | CannotProceed | org.omg.CosNaming.NamingContextPackage.InvalidName e) {
+            System.out.println("Error: " + e);
+            e.printStackTrace(System.out);
+        }
 
     }//GEN-LAST:event_b_generarActionPerformed
 

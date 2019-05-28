@@ -4,21 +4,24 @@
  * and open the template in the editor.
  */
 package corbacliente.ventanas;
-
-import corbacliente.Cliente;
-
+import utility.Utility;
 /**
  *
  * @author Oriana
  */
 public class Main extends javax.swing.JFrame {
+
     private static CrearFactura crearFactura;
+
     /**
      * Creates new form Main
      */
     public Main(CrearFactura crearFactura) {
         initComponents();
         this.crearFactura = crearFactura;
+        Utility utility = new Utility(this);
+        utility.centerOnScreen();
+
     }
 
     /**
@@ -34,6 +37,7 @@ public class Main extends javax.swing.JFrame {
         lbl_titulo = new javax.swing.JLabel();
         b_generar = new javax.swing.JButton();
         b_crear = new javax.swing.JButton();
+        b_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,6 +52,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        b_salir.setText("Salir");
+        b_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_salirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_fondoLayout = new javax.swing.GroupLayout(panel_fondo);
         panel_fondo.setLayout(panel_fondoLayout);
         panel_fondoLayout.setHorizontalGroup(
@@ -55,9 +66,11 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fondoLayout.createSequentialGroup()
                 .addContainerGap(141, Short.MAX_VALUE)
                 .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(b_generar)
                     .addComponent(b_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_titulo))
+                    .addComponent(lbl_titulo)
+                    .addGroup(panel_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(b_salir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b_generar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(131, 131, 131))
         );
         panel_fondoLayout.setVerticalGroup(
@@ -65,11 +78,13 @@ public class Main extends javax.swing.JFrame {
             .addGroup(panel_fondoLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(lbl_titulo)
-                .addGap(34, 34, 34)
+                .addGap(52, 52, 52)
                 .addComponent(b_crear)
                 .addGap(18, 18, 18)
                 .addComponent(b_generar)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(b_salir)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,6 +105,10 @@ public class Main extends javax.swing.JFrame {
         crearFactura.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_b_crearActionPerformed
+
+    private void b_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_b_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,6 +148,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_crear;
     private javax.swing.JButton b_generar;
+    private javax.swing.JButton b_salir;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JPanel panel_fondo;
     // End of variables declaration//GEN-END:variables

@@ -7,6 +7,7 @@ package corbacliente.ventanas;
 
 import corbacliente.CustomListModel;
 import corbacliente.Producto;
+import utility.Utility;
 
 /**
  *
@@ -22,6 +23,8 @@ public class CrearFactura extends javax.swing.JFrame {
     public CrearFactura() {
         initComponents();
         lista.setModel(list_model);
+        Utility utility = new Utility(this);
+        utility.centerOnScreen();
     }
 
     /**

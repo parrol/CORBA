@@ -1,6 +1,6 @@
-module example{ 
+module manejadores{ 
     
-    interface fibonacci{ 
+    interface factura{ 
         
         /*
          * Para generar 

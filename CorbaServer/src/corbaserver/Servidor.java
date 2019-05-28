@@ -1,6 +1,6 @@
 package corbaserver;
-import example.fibonacci;
-import example.fibonacciHelper;
+import manejadores.factura;
+import manejadores.facturaHelper;
 import org.omg.CosNaming.*;
 import org.omg.CORBA.*;
 import org.omg.CORBA.ORBPackage.InvalidName;
@@ -11,7 +11,7 @@ import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAManagerPackage.AdapterInactive;
 import org.omg.PortableServer.POAPackage.ServantNotActive;
 import org.omg.PortableServer.POAPackage.WrongPolicy;
-public class FiboServer {
+public class Servidor {
 
     public static void main(String args[]) {
         try {
@@ -22,16 +22,16 @@ public class FiboServer {
             //Se activa POA Manager
             rootpoa.the_POAManager().activate();       
             //Se instancia de clase que contiene los métodos a utilizar
-            FiboImpl fiboImpl = new FiboImpl();             
-            //obtiene la referencia de la clase FiboImpl (servant)
-            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(fiboImpl);
-            fibonacci href = fibonacciHelper.narrow(ref);
+            Metodos metodos = new Metodos();             
+            //obtiene la referencia de la clase Metodos (servant)
+            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(metodos);
+            factura href = facturaHelper.narrow(ref);
             
             //obtiene referencia
             org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
             NamingContextExt rootContext = NamingContextExtHelper.narrow(objRef);
              
-            NameComponent nameComponent[] = rootContext.to_name("Fibonacci");
+            NameComponent nameComponent[] = rootContext.to_name("Factura");
             rootContext.rebind(nameComponent, href);
             
             //listo para recibir peticiones

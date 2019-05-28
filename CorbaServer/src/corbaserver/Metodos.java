@@ -1,8 +1,8 @@
 package corbaserver;
 
-import example.fibonacciPOA;
+import manejadores.facturaPOA;
 
-public class FiboImpl extends fibonacciPOA {
+public class Metodos extends facturaPOA {
 
     @Override
     public String generar(int numero) {

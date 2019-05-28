@@ -5,8 +5,8 @@ SET JAVA_HOME="C:\Program Files\Java\jdk1.8.0_211"
 SET PATH_IDL="C:\Users\Oriana\Documents\NetBeansProjects\Corba\CorbaInterface\src\corbainterface"
 
 :: nombre del archivo IDL
-SET IDL_NAME=fibonacci.idl
+SET IDL_NAME=generar.idl
 
 :: comando para compilar
 %JAVA_HOME%\bin\idlj -fall -td %PATH_IDL% %PATH_IDL%\%IDL_NAME%
-pause
+::pause

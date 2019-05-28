@@ -10,7 +10,7 @@ import corbacliente.CustomListModel;
 import corbacliente.Factura;
 import corbacliente.Interfaz;
 import corbacliente.Persona;
-import corbacliente.Producto;
+import corbacliente.Productos;
 import static corbacliente.ventanas.Clientes.list_model;
 import static corbacliente.ventanas.Clientes.selectedIndex;
 import java.awt.Component;
@@ -143,14 +143,21 @@ public class Main extends javax.swing.JFrame {
             org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
             NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-            factura metodos = facturaHelper.narrow(ncRef.resolve_str("Factura"));
-            
             System.out.println("Persona seleccionada: " + Clientes.cliente);
-            ArrayList<Producto> productos = new ArrayList<Producto>();
-            productos = Productos.list_model.getLista();
+            ArrayList<Productos> productos = new ArrayList<Productos>();
+
+            Productos[] productosArr = productos.toArray(new Productos[productos.size()]);
+            for (Productos s : productosArr) {
+                System.out.println(s);
+            }
+
+            productos = ProductosV.list_model.getLista();
             Persona persona = Clientes.list_model.getPersona(Clientes.selectedIndex);
             Factura factura = new Factura(persona, productos, "", "", "", 0);
             factura.imprimir();
+
+            factura metodos = facturaHelper.narrow(ncRef.resolve_str("Factura"));
+            metodos.generar(Clientes.cliente, persona.getCedula(), persona.getDireccion(), productosArr, "Telcel", "Altavista", "0412-0812349", 0);
         } catch (InvalidName | NotFound | CannotProceed | org.omg.CosNaming.NamingContextPackage.InvalidName e) {
             System.out.println("Error: " + e);
             e.printStackTrace(System.out);

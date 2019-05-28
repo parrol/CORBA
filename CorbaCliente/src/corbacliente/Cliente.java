@@ -1,7 +1,6 @@
 package corbacliente;
 
 import corbacliente.ventanas.*;
-import corbacliente.ventanas.Main;
 import corbacliente.Interfaz;
 import java.util.Scanner;
 import manejadores.factura;
@@ -28,7 +27,7 @@ public class Cliente {
             Main main = new Main();
             main.setVisible(true);
 
-            Productos productos = new Productos();
+            ProductosV productos = new ProductosV();
             productos.setVisible(false);
 
             Clientes clientes = new Clientes();
@@ -38,19 +37,9 @@ public class Cliente {
             Interfaz.getInterfaz().add(1, clientes);
             Interfaz.getInterfaz().add(2, productos);
 
-            Scanner c = new Scanner(System.in);
-            System.out.println("PC> - Generador de Fibonacci - ");
-            for (;;) {//ciclo infinito
-                System.out.println("PC> Ingrese numero [x:salir]:");
-                String input = c.nextLine();
-                if (input.equals("x")) {
-                    break;
-                }
-                int numero = Integer.parseInt(input);
+            
                 //String response = metodos.generar(numero);
                 //System.out.println("Fibonacci de " + numero + " es " + response);
-                System.out.println("----------------------------------------------------------------------------");
-            }
 
         } catch (InvalidName | NotFound | CannotProceed | org.omg.CosNaming.NamingContextPackage.InvalidName e) {
             System.out.println("Error: " + e);

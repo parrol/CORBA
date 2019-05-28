@@ -8,21 +8,20 @@ package corbacliente.ventanas;
 import corbacliente.CustomListModel;
 import corbacliente.Interfaz;
 import corbacliente.Persona;
-import corbacliente.Producto;
 import utility.Utility;
 
 /**
  *
  * @author Oriana
  */
-public class Productos extends javax.swing.JFrame {
+public class ProductosV extends javax.swing.JFrame {
 
     public static CustomListModel list_model = new CustomListModel();
 
     /**
      * Creates new form CrearFactura
      */
-    public Productos() {
+    public ProductosV() {
         initComponents();
         productos.setModel(list_model);
         Utility utility = new Utility(this);
@@ -217,7 +216,7 @@ public class Productos extends javax.swing.JFrame {
 
     private void b_anadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_anadirActionPerformed
         float precio = Float.parseFloat(fld_precio.getText());
-        Producto p = new Producto(fld_nombre.getText(), precio);
+        corbacliente.Productos p = new corbacliente.Productos(fld_nombre.getText(), precio);
         list_model.add(p);
     }//GEN-LAST:event_b_anadirActionPerformed
 
@@ -256,7 +255,7 @@ public class Productos extends javax.swing.JFrame {
     private void mostrarProducto() {
         int selection = productos.getSelectedIndex();
         if (selection != -1) {
-            Producto p = list_model.getProducto(selection);
+            corbacliente.Productos p = list_model.getProducto(selection);
             lbl_info_nombre.setText(p.getNombre());
             lbl_info_precio.setText(Float.toString(p.getPrecio()));
 
@@ -288,13 +287,13 @@ public class Productos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductosV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductosV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductosV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Productos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductosV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -302,7 +301,7 @@ public class Productos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Productos().setVisible(true);
+                new ProductosV().setVisible(true);
             }
         });
     }

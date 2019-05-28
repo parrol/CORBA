@@ -24,8 +24,8 @@ public class CustomListModel extends AbstractListModel {
     @Override
     public Object getElementAt(int index) {
         Object x = null;
-        if (lista.get(index) instanceof Producto) {
-            Producto p = (Producto) lista.get(index);
+        if (lista.get(index) instanceof Productos) {
+            Productos p = (Productos) lista.get(index);
             System.out.println(p);
             return p.getNombre();
         }
@@ -37,7 +37,7 @@ public class CustomListModel extends AbstractListModel {
         return x;
     }
 
-    public void add(Producto p) {
+    public void add(Productos p) {
         lista.add(p);
         this.fireIntervalAdded(this, getSize(), getSize() + 1);
     }
@@ -56,8 +56,8 @@ public class CustomListModel extends AbstractListModel {
         lista.removeAll(lista);
     }
 
-    public Producto getProducto(int index) {
-        return (Producto) lista.get(index);
+    public Productos getProducto(int index) {
+        return (Productos) lista.get(index);
     }
 
     public Persona getPersona(int index) {

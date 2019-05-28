@@ -9,11 +9,11 @@ package corbacliente;
  *
  * @author Oriana
  */
-public class Producto {
-    private String nombre;
-    private float precio;
+public class Productos {
+    public String nombre;
+    public float precio;
 
-    public Producto(String nombre, float precio) {
+    public Productos(String nombre, float precio) {
         this.nombre = nombre;
         this.precio = precio;
     }

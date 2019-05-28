@@ -2,14 +2,14 @@ module manejadores{
     
     struct Productos{
         string nombre;
-        float pecio;
+        float precio;
     };
 
-    typedef sequence <Productos> productoss;
+    typedef sequence<Productos> productosarray;
 
     interface factura{ 
-        
-        void generar(in string nombre, in string cedula, in string direccionp, in productoss productos, in string company, in string direccionc, in string telefono, in long numero);
+
+        void generar(in string nombre, in string cedula, in string direccionp, in productosarray productos, in string company, in string direccionc, in string telefono, in long numero);
         
     }; 
 };

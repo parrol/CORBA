@@ -6,7 +6,6 @@
 package corbaserver;
 
 import java.util.ArrayList;
-import jdk.nashorn.internal.objects.NativeArray;
 
 /**
  *

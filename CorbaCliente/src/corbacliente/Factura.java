@@ -15,14 +15,14 @@ import jdk.nashorn.internal.objects.NativeArray;
 public class Factura {
 
     private Persona persona;
-    private ArrayList<Producto> productos;
+    private ArrayList<Productos> productos;
     private String company;
     private String direccion;
     private String telefono;
     private int numero;
     private float total;
 
-    public Factura(Persona persona, ArrayList<Producto> productos, String company, String direccion, String telefono, int numero) {
+    public Factura(Persona persona, ArrayList<Productos> productos, String company, String direccion, String telefono, int numero) {
         this.persona = persona;
         this.productos = productos;
         this.company = company;
@@ -36,7 +36,7 @@ public class Factura {
         return persona;
     }
 
-    public ArrayList<Producto> getProductos() {
+    public ArrayList<Productos> getProductos() {
         return productos;
     }
 
@@ -60,7 +60,7 @@ public class Factura {
         this.persona = persona;
     }
 
-    public void setProductos(ArrayList<Producto> productos) {
+    public void setProductos(ArrayList<Productos> productos) {
         this.productos = productos;
     }
 

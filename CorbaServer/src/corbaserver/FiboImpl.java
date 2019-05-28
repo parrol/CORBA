@@ -2,10 +2,6 @@ package corbaserver;
 
 import example.fibonacciPOA;
 
-/**
- * @see https://www.jc-mouse.net/
- * @author mouse
- */
 public class FiboImpl extends fibonacciPOA {
 
     @Override

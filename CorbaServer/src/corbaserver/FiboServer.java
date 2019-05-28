@@ -11,21 +11,17 @@ import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAManagerPackage.AdapterInactive;
 import org.omg.PortableServer.POAPackage.ServantNotActive;
 import org.omg.PortableServer.POAPackage.WrongPolicy;
-/**
- * @see https://www.jc-mouse.net/
- * @author mouse
- */
 public class FiboServer {
 
     public static void main(String args[]) {
         try {
-            //crea instancua al ORB
+            //Se instancia el ORB
             ORB orb = ORB.init(args, null);            
-            //crea instancia a POA 
+            //Se instancia el POA 
             POA rootpoa = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));       
-            //activa POA Manager
+            //Se activa POA Manager
             rootpoa.the_POAManager().activate();       
-            //instancia de clase Fibonacci
+            //Se instancia de clase que contiene los métodos a utilizar
             FiboImpl fiboImpl = new FiboImpl();             
             //obtiene la referencia de la clase FiboImpl (servant)
             org.omg.CORBA.Object ref = rootpoa.servant_to_reference(fiboImpl);
@@ -39,7 +35,7 @@ public class FiboServer {
             rootContext.rebind(nameComponent, href);
             
             //listo para recibir peticiones
-            System.out.println("Servidor> listo y en espera");
+            System.out.println("Servidor listo para recibir peticiones.");
             orb.run();            
         } catch (AdapterInactive | InvalidName | ServantNotActive | WrongPolicy | org.omg.CosNaming.NamingContextPackage.InvalidName | NotFound | CannotProceed e) {
             System.err.println("Error: " + e.getMessage());
